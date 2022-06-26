@@ -1,0 +1,7 @@
+body {
+    height: 100%;
+}
+
+.about-section {
+    flex: 1 0 auto;
+}

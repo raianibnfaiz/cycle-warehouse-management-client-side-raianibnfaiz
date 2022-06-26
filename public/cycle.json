@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Steel Gear Bicycle",
+        "price": "400",
+        "supplier": "John Cruise",
+        "image": "https://i.ibb.co/gjmdfHb/atharva-whaval-00-Ft-I1-Ox-MUI-unsplash-1.jpg",
+        "description": "This cycle is perfect for everyone",
+        "quantity": "12"
+    },
+    {
+        "name": "Road Bicycle",
+        "price": "450",
+        "supplier": "Shoaib Hossain",
+        "image": "https://i.ibb.co/RBNQVF1/derek-thomson-AJ-7-Qp-XV9-U4-unsplash.jpg",
+        "description": "This cycle is perfect for everyone who ride cycle regularly on the road",
+        "quantity": "20"
+    },
+    {
+        "name": "Plastic Bicycle",
+        "price": "200",
+        "supplier": "Nick Barron",
+        "image": "https://i.ibb.co/r7nWC4q/john-nzoka-Fo-ZKNr-Xb8-Q8-unsplash.jpg",
+        "description": "This bicycle has minimum weight and rider can ride this cycle very fast",
+        "quantity": "6"
+    },
+    {
+        "name": " Mountain Bicycle",
+        "price": "900",
+        "supplier": "Ryan Gary",
+        "image": "https://i.ibb.co/P17BH2C/john-nzoka-n0i-Cl-Jpvm-PQ-unsplash.jpg",
+        "description": "This cycle has proper balance and has very light weight",
+        "quantity": "10"
+    },
+    {
+        "name": "Solid Steel Bicycle",
+        "price": "800",
+        "supplier": "Andy Jones",
+        "image": "https://i.ibb.co/ScrxrW6/robin-popa-b-F4-Ab0gpa-Ps-unsplash.jpg",
+        "description": "Rider can ride this cycle on the mountain and can have adventure",
+        "quantity": "18"
+    },
+    {
+        "name": "Fixed Gear Bicycle",
+        "price": "300",
+        "supplier": "Tony Warner",
+        "image": "https://i.ibb.co/rwL9ShJ/zoltan-tasi-SFel5f-VOw-unsplash.jpg",
+        "description": "This product has fixed gear. Rider Can ride this cycle very smoothly",
+        "quantity": "32"
+    }
+]
