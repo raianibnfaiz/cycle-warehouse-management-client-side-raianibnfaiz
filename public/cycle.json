@@ -46,5 +46,21 @@
         "image": "https://i.ibb.co/rwL9ShJ/zoltan-tasi-SFel5f-VOw-unsplash.jpg",
         "description": "This product has fixed gear. Rider Can ride this cycle very smoothly",
         "quantity": "32"
+    },
+    {
+        "name": "White Bicycle With Basket",
+        "price": "250",
+        "supplier": "Gary Neville",
+        "image": "https://i.ibb.co/875tSft/7-1.jpg",
+        "description": "This cycle has fixed basket. Rider can carry something in the basket while riding",
+        "quantity": "11"
+    },
+    {
+        "name": "Purple Racing Bicycle ",
+        "price": "380",
+        "supplier": "Mike Wilson",
+        "image": "https://i.ibb.co/P9JRGdK/8.jpg",
+        "description": "This cycle has very unique color. Rider Can ride this cycle very smoothly",
+        "quantity": "17"
     }
 ]

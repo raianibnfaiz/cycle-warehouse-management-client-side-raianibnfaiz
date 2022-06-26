@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import ManageInventory from '../ManageInventory/ManageInventory';
+import useProducts from '../../hooks/useProducts';
 
 const UpdateProduct = () => {
     const { id } = useParams();
-    const [product, setProduct] = useState({});
+    const [products, setProducts] = useProducts();
+    const [updateProduct, setUpdateProduct] = useState({});
     useEffect(() => {
         fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
-            .then(data => setProduct(data))
+            .then(data => setUpdateProduct(data))
     }, [])
 
     const navigate = useNavigate();
@@ -17,7 +20,7 @@ const UpdateProduct = () => {
         event.preventDefault();
         const quantity = event.target.quantity.value;
 
-        const updatedProduct = { quantity };
+        const updatedProductQuantity = { quantity };
         console.log(quantity)
         const url = `http://localhost:5000/product/${id}`;
         fetch(url, {
@@ -25,48 +28,86 @@ const UpdateProduct = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedProduct)
+            body: JSON.stringify(updatedProductQuantity)
         })
             .then(res => res.json())
             .then(data => {
                 console.log('success!', data);
-                alert(`The quantity product of this product is now ${data.quantity} `)
+                alert(`The quantity of ${updateProduct.name} is now ${data.quantity} `)
 
                 event.target.quantity.value = " ";
                 navigate('/home');
             })
     }
+    const handleDelivered = (id) => {
+        if (window.confirm("Are you sure you want to deliver?")) {
+            const url = `http://localhost:5000/product/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const remaining = products.filter(product => product._id !== id);
+                    setProducts(remaining);
+                    console.log(data);
+                    navigate('/home');
+                })
+        }
+    }
 
     return (
         <div className='container mt-2'>
+
             <div className="row">
                 <div className="col-md-8">
                     <div className='text-enter w-75 mx-auto p-4 border'>
-                        <h3> {product.name}</h3>
-                        <img className='w-75' src={product.image} alt="" />
-                        <p>Price: ${product.price}</p>
+                        <h3> {updateProduct.name}</h3>
+                        <img className='w-75' src={updateProduct.image} alt="" />
+                        <p>Price: ${updateProduct.price}</p>
                         <p>ID: {id}</p>
-                        <h5>Supplier: <span style={{ color: "orangeRed" }}>{product.supplier}</span></h5>
-                        <h6><small>Description: </small>{product.description}</h6>
-                        <h5>Quantity: <span style={{ color: "tomato" }}>{product.quantity}</span></h5>
+                        <h5>Supplier: <span style={{ color: "orangeRed" }}>{updateProduct.supplier}</span></h5>
+                        <h6><small>Description: </small>{updateProduct.description}</h6>
+                        <h5>Quantity: <span style={{ color: "tomato" }}>{updateProduct.quantity}</span></h5>
                         <p>Sold: </p>
                     </div>
                 </div>
                 <div className="col-md-4">
-                    <h5 >Update <span className="text-warning">{product.name}</span></h5>
+                    <div className="container pb-5 mt-1">
+                        <div style={{ height: "1px" }} className='container mb-2 w-25 mx-auto bg-primary '>
+
+                        </div>
+                        <Link to='/manageInventories' element={<ManageInventory></ManageInventory>}>
+                            <button style={{ border: "2px solid orangeRed", borderRadius: "5px" }} className="btn btn-dark">Manage Inventories</button>
+                        </Link>
+
+                        <div style={{ height: "1px" }} className='container mt-2 w-25 mx-auto bg-warning '>
+
+                        </div>
+                    </div>
+                    <h5 >Update <span className="text-warning">{updateProduct.name}</span></h5>
                     <h4> Restock The Items</h4>
-                    <div className='container border text-center pb-5 w-75 mb-5' >
+                    <div className='container border text-center pb-5 w-100 mb-5' >
                         <Form onSubmit={handleUpdateProduct}>
-                            <Form.Group className="mb-3" >
+                            <Form.Group className="mb-4 " >
                                 <Form.Label>Quantity</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Quantity" name="quantity" />
+                                <Form.Control type="text" placeholder="Input Quantity Number" name="quantity" />
 
                             </Form.Group>
                             <Button variant="success" type="submit">
-                                Submit
+                                Update
                             </Button>
                         </Form>
                     </div>
+                    <div className="container pb-5 mb-3">
+                        <div style={{ height: "1px" }} className='container mb-2 w-25 mx-auto bg-primary '>
+
+                        </div>
+                        <button onClick={() => handleDelivered(id)} className="btn btn-danger">Delivered</button>
+                        <div style={{ height: "1px" }} className='container mt-2 w-25 mx-auto bg-warning '>
+
+                        </div>
+                    </div>
+
                 </div>
 
 
