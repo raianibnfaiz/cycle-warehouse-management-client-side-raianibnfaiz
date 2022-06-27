@@ -11,6 +11,8 @@ import Footer from './Pages/Footer/Footer';
 import UpdateProduct from './Pages/UpdateProduct/UpdateProduct';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
+import AddNewBicycle from './Pages/AddNewBicycle/AddNewBicycle';
+import MyItems from './Pages/MyItems/MyItems';
 function App() {
   return (
     <div className="App">
@@ -29,6 +31,18 @@ function App() {
         <Route path="/manageInventories" element={
           <RequireAuth>
             <ManageInventory></ManageInventory>
+          </RequireAuth>}>
+
+        </Route>
+        <Route path="/addProduct" element={
+          <RequireAuth>
+            <AddNewBicycle></AddNewBicycle>
+          </RequireAuth>}>
+
+        </Route>
+        <Route path="/myItems" element={
+          <RequireAuth>
+            <MyItems></MyItems>
           </RequireAuth>}>
 
         </Route>

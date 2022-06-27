@@ -1,6 +1,8 @@
 import React from 'react';
 import useProducts from '../../hooks/useProducts';
+import AddNewBicycle from '../AddNewBicycle/AddNewBicycle';
 import ManageProduct from '../ManageProduct/ManageProduct';
+import { Link } from 'react-router-dom';
 
 const ManageInventory = () => {
     const [products, setProducts] = useProducts();
@@ -20,8 +22,12 @@ const ManageInventory = () => {
     }
     return (
         <div>
-
-            <div className="row  m-5">
+            <div className="mt-2 w-50 mx-auto">
+                <Link to='/addProduct' element={<AddNewBicycle></AddNewBicycle>}>
+                    <button style={{ border: "3px solid goldenRod" }} className='btn btn-success'>Add New Bicycle</button>
+                </Link>
+            </div>
+            <div className="row  m-4">
                 {
                     products.map(product =>
                         <ManageProduct key={product._id} handleDelete={handleDelete} product={product}></ManageProduct>)

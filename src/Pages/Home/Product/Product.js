@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Product = ({ product }) => {
-    const { _id, name, image, description, price, supplier, quantity } = product;
+    const { _id, name, image, description, price, supplier, quantity, sold } = product;
     const navigate = useNavigate();
     const navigateToProductUpdate = id => {
         navigate(`/product/${id}`);
@@ -15,6 +15,7 @@ const Product = ({ product }) => {
             <p>Supplier: <span style={{ color: "orangeRed" }}>{supplier}</span></p>
             <p><small>{description}</small></p>
             <h6>Quantity: <span style={{ color: "tomato" }}>{quantity}</span></h6>
+            <h6>Number of Item Sold: <span style={{ color: "goldenRod" }}>{sold}</span></h6>
             <button onClick={() => navigateToProductUpdate(_id)} className='btn btn-primary'>Stock Update</button>
         </div>
     );

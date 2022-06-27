@@ -13,24 +13,39 @@ const Header = () => {
     }
     return (
         <div>
-            <Navbar bg="dark" variant="dark">
+            <Navbar collapseOnSelect sticky='top' expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="/">Cycle Warehouse</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="/home">Home</Nav.Link>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link href="/home">Home</Nav.Link>
 
-                    </Nav>
-                    <Nav>
-                        <Nav.Link as={Link} to="about">About</Nav.Link>
-                    </Nav>
-                    <Nav>
-                        {
-                            user ?
+                        </Nav>
 
-                                <button className='btn btn-warning' onClick={handleSignOut}>Logout</button> :
-                                <Nav.Link as={Link} to="login">Login</Nav.Link>
-                        }
-                    </Nav>
+                        <Nav>
+                            {
+                                user &&
+                                <>
+                                    <Nav.Link as={Link} to="/addProduct">Add Products</Nav.Link>
+                                    <Nav.Link as={Link} to="/manageInventories">Manage Items</Nav.Link>
+                                    <Nav.Link as={Link} to="/myItems">My Items</Nav.Link>
+
+                                </>
+                            }
+                        </Nav>
+                        <Nav>
+                            <Nav.Link as={Link} to="about">About</Nav.Link>
+                        </Nav>
+                        <Nav>
+                            {
+                                user ?
+
+                                    <button className='btn btn-warning mx-auto' onClick={handleSignOut}>Logout</button> :
+                                    <Nav.Link as={Link} to="login">Login</Nav.Link>
+                            }
+                        </Nav>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
         </div>
