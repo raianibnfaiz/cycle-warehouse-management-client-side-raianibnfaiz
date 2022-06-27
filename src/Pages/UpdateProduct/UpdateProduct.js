@@ -68,7 +68,7 @@ const UpdateProduct = () => {
                         <h5>Supplier: <span style={{ color: "orangeRed" }}>{updateProduct.supplier}</span></h5>
                         <h6><small>Description: </small>{updateProduct.description}</h6>
                         <h5>Quantity: <span style={{ color: "tomato" }}>{updateProduct.quantity}</span></h5>
-                        <p>Sold: </p>
+                        <h6>Item Sold :<span style={{ color: "goldenRod" }}> {updateProduct.sold}</span> </h6>
                     </div>
                 </div>
                 <div className="col-md-4">
@@ -84,7 +84,7 @@ const UpdateProduct = () => {
 
                         </div>
                     </div>
-                    <h5 >Update <span className="text-warning">{updateProduct.name}</span></h5>
+                    <h5 >Update <span style={{ color: "tomato" }}>{updateProduct.name}</span></h5>
                     <h4> Restock The Items</h4>
                     <div className='container border text-center pb-5 w-100 mb-5' >
                         <Form onSubmit={handleUpdateProduct}>

@@ -1,9 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Home from './Pages/Home/Home';
 import Header from './Pages/Header/Header';
-import About from './Pages/About/About';
 import NotFound from './Pages/NotFound/NotFound';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
@@ -13,6 +11,7 @@ import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import AddNewBicycle from './Pages/AddNewBicycle/AddNewBicycle';
 import MyItems from './Pages/MyItems/MyItems';
+import Blogs from './Pages/Blogs/Blogs';
 function App() {
   return (
     <div className="App">
@@ -46,7 +45,7 @@ function App() {
           </RequireAuth>}>
 
         </Route>
-        <Route path='/about' element={<About></About>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

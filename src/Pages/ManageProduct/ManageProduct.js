@@ -12,7 +12,7 @@ const ManageProduct = ({ product, handleDelete }) => {
             <p>Price: ${price}</p>
             <p>Supplier: <span style={{ color: "orangeRed" }}>{supplier}</span></p>
             <p><small>{description}</small></p>
-            <h6>Quantity: <span style={{ color: "tomato" }}>{quantity}</span></h6>
+            <h4>Quantity: <span style={{ color: "tomato" }}>{quantity}</span></h4>
             <button onClick={() => handleDelete(_id)} className='btn btn-danger'>Delete</button>
         </div>
     );

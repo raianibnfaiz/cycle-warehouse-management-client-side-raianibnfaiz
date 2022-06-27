@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import auth from '../../firebase.init';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,10 +9,10 @@ const Register = () => {
         createUserWithEmailAndPassword,
         user,
         loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
-    const navigate = useNavigate();
 
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
     const navigateLogin = () => {
         navigate('/login');
     }
@@ -26,9 +26,14 @@ const Register = () => {
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
+        if (password.length < 6) {
+            setError("password length must be greater than 6 character!");
+            return;
+        }
 
         createUserWithEmailAndPassword(email, password);
     }
+
     return (
         <div className='register-form w-50 mx-auto mt-5 border p-4'>
             <h2 style={{ textAlign: 'center' }}>Please Register</h2>
@@ -47,7 +52,7 @@ const Register = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name="password" placeholder="Password" required />
                 </Form.Group>
-
+                <p style={{ color: "red" }}>{error}</p>
                 <Button variant="primary" type="submit">
                     Register
                 </Button>

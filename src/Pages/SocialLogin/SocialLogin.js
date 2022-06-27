@@ -34,7 +34,9 @@ const SocialLogin = () => {
             </div>
             {errorMessage}
             <div >
-                <button onClick={() => signInWithGoogle()} className='btn btn-primary w-50'>Google Sign In</button>
+                <button onClick={() => signInWithGoogle()} className='btn btn-primary w-50'>
+                    <img src="https://cdn.icon-icons.com/icons2/729/PNG/128/google_icon-icons.com_62736.png" style={{ width: "20px", marginRight: "6px" }} alt="" />
+                    Google Sign In</button>
             </div>
         </div>
     );
