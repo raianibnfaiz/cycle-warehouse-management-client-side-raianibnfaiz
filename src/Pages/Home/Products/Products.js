@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
 import { Link } from 'react-router-dom';
 import ManageInventory from '../../ManageInventory/ManageInventory';
+import './Products.css';
 const Products = () => {
     const [products, setProducts] = useState([]);
     const firstSixProducts = products.slice(0, 6);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://nameless-woodland-97201.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, [])
     return (
         <div className=''>
             <div className=" ">
-                <h1 className='text-primary text-center mt-5 '> Our products</h1>
+                <h1 className='text-center mt-4 title p-4'> Our stocked products</h1>
 
                 <div className="products-container row m-4">
                     {

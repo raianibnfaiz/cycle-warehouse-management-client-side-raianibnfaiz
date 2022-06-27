@@ -6,13 +6,14 @@ import Container from 'react-bootstrap/Container';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import './Header.css';
 const Header = () => {
     const [user] = useAuthState(auth);
     const handleSignOut = () => {
         signOut(auth);
     }
     return (
-        <div>
+        <div className='headerNavbar'>
             <Navbar collapseOnSelect sticky='top' expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="/">Cycle Warehouse</Navbar.Brand>

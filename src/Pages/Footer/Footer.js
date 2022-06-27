@@ -5,8 +5,8 @@ const Footer = () => {
     const today = new Date();
     const year = today.getFullYear();
     return (
-        <footer className='fixed-bottom '>
-            <p className='text-center text-success mt-2'>Copyright©{year}</p>
+        <footer className='fixed-bottom'>
+            <p className='text-center  mt-2'>Copyright©{year}</p>
         </footer>
     );
 };

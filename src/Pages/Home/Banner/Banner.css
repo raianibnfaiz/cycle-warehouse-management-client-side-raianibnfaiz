@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Josefin+Sans&family=Kanit:wght@300;800&family=Lobster&family=Outfit:wght@300&family=Pacifico&family=Poppins:wght@400;500&family=Roboto+Condensed:wght@300&family=Secular+One&family=Yeseva+One&display=swap');
+
+body,
+html {
+    height: 100%;
+}
+
+.bg {
+    background-image: url("https://i.ibb.co/XVC51S9/banner.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -2;
+    letter-spacing: 3px;
+    font-family: 'Concert One', cursive;
+}
+
+.title {
+    padding-top: 10px;
+}

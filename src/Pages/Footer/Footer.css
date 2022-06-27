@@ -1,5 +1,6 @@
 footer {
     width: 100%;
-
-    background-color: antiquewhite;
+    color: antiquewhite;
+    background-color: rgb(40, 40, 40);
+    font-family: 'Concert One', cursive;
 }

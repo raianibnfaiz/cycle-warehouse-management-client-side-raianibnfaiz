@@ -10,7 +10,7 @@ const UpdateProduct = () => {
     const [products, setProducts] = useProducts();
     const [updateProduct, setUpdateProduct] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${id}`)
+        fetch(`https://nameless-woodland-97201.herokuapp.com/product/${id}`)
             .then(res => res.json())
             .then(data => setUpdateProduct(data))
     }, [])
@@ -22,7 +22,7 @@ const UpdateProduct = () => {
 
         const updatedProductQuantity = { quantity };
         console.log(quantity)
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://nameless-woodland-97201.herokuapp.com/product/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -41,7 +41,7 @@ const UpdateProduct = () => {
     }
     const handleDelivered = (id) => {
         if (window.confirm("Are you sure you want to deliver?")) {
-            const url = `http://localhost:5000/product/${id}`
+            const url = `https://nameless-woodland-97201.herokuapp.com/product/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

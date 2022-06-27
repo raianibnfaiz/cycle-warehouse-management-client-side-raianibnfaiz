@@ -4,37 +4,57 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import MyItem from '../MyItem/MyItem';
+import useProducts from '../../hooks/useProducts';
 
 const MyItems = () => {
     const [myItem, setMyItem] = useState([]);
     const [user, loading] = useAuthState(auth);
-
+    const [products, setProducts] = useProducts();
     useEffect(() => {
 
         const getProducts = async () => {
             const email = user.email;
             console.log(email);
-            const url = `http://localhost:5000/myProducts?email=${email}`;
+            const url = `https://nameless-woodland-97201.herokuapp.com/myProducts?email=${email}`;
             const { data } = await axios.get(url);
             setMyItem(data);
         }
         getProducts();
-        //console.log(`http://localhost:5000/products?email=${email}`);
+        //console.log(`https://nameless-woodland-97201.herokuapp.com/products?email=${email}`);
 
     }, [user])
     if (loading) {
         return <Loading></Loading>;
     }
+    const handleDelete = (id) => {
+        if (window.confirm("Are you sure you want to delete?")) {
+            const url = `https://nameless-woodland-97201.herokuapp.com/product/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const remaining = products.filter(product => product._id !== id);
+                    const remainingMyItems = myItem.filter(product => product._id !== id);
+                    setProducts(remaining);
+                    setMyItem(remainingMyItems);
+                    console.log(data);
+                })
+        }
+    }
     return (
         <div>
-            {
-                myItem.length === 0 ?
-                    <div style={{ border: "1px solid skyBlue", borderRadius: "5px" }} className='w-50 p-4 mx-auto mt-5'><h2 className="text-center text-warning p-5">You Have Not Added Any<br /> <span className="text-center" style={{ color: "tomato" }}> Product</span> Yet!</h2></div>
+            <h5 className="m-1 p-1 text-center">My Email:<br /><span style={{ color: "orangeRed" }}>{user.email}</span></h5>
+            <div className="row m-4">
+                {
+                    myItem.length === 0 ?
+                        <div style={{ border: "1px solid skyBlue", borderRadius: "5px" }} className='w-50 p-4 mx-auto mt-5'><h2 className="text-center text-warning p-5">You Have Not Added Any<br /> <span className="text-center" style={{ color: "tomato" }}> Product</span> Yet!</h2></div>
 
-                    :
+                        :
 
-                    myItem.map(item => <MyItem key={item._id} item={item}></MyItem>)
-            }
+                        myItem.map(item => <MyItem key={item._id} handleDelete={handleDelete} item={item}></MyItem>)
+                }
+            </div>
         </div>
     );
 };

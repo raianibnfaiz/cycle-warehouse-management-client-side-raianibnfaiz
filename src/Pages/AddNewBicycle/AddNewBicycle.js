@@ -17,7 +17,7 @@ const AddNewBicycle = () => {
         const sold = event.target.sold.value;
         const newCycle = { email, name, image, description, price, supplier, quantity, sold };
         console.log(newCycle);
-        fetch('http://localhost:5000/product', {
+        fetch('https://nameless-woodland-97201.herokuapp.com/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
