@@ -59,8 +59,8 @@ const UpdateProduct = () => {
         <div className='container mt-2'>
 
             <div className="row">
-                <div className="col-md-8">
-                    <div className='text-enter w-75 mx-auto p-4 border'>
+                <div className="col-md-7">
+                    <div className='text-enter w-75 mx-auto p-4 mb-4 border'>
                         <h3> {updateProduct.name}</h3>
                         <img className='w-75' src={updateProduct.image} alt="" />
                         <p>Price: ${updateProduct.price}</p>

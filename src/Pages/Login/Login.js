@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -27,11 +28,15 @@ const Login = () => {
     }
 
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
-        signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(email, password);
+        const { data } = await axios.post('http://localhost:5000/login', { email });
+        localStorage.setItem('accessToken', data.accessToken);
+        navigate(from, { replace: true });
+        console.log(data);
     }
     let from = location.state?.from?.pathname || "/";
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
@@ -50,9 +55,7 @@ const Login = () => {
         navigate('/register');
     }
 
-    if (user) {
-        navigate(from, { replace: true });
-    }
+
     if (loading) {
         return <Loading></Loading>;
     }

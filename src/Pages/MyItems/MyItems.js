@@ -16,7 +16,11 @@ const MyItems = () => {
             const email = user.email;
             console.log(email);
             const url = `https://nameless-woodland-97201.herokuapp.com/myProducts?email=${email}`;
-            const { data } = await axios.get(url);
+            const { data } = await axios.get(url, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             setMyItem(data);
         }
         getProducts();
