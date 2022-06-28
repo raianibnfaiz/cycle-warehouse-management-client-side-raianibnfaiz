@@ -45,7 +45,7 @@ const AddNewBicycle = () => {
                 <input className='mb-2' placeholder='Quantity' name="quantity" type="number" required />
                 <input className='mb-2' placeholder='Number Of Item Sold' name="sold" type="number" required />
 
-                <button type="submit" className="mt-2 w-75 mx-auto btn btn-primary btn-sm">Add Product</button>
+                <button type="submit" className="mt-2 w-75 mx-auto btn btn-primary">Add Product</button>
             </form>
         </div>
     );
