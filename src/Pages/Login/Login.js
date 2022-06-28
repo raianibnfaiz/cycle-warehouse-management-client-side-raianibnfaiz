@@ -8,7 +8,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import { ToastContainer, toast } from 'react-toastify';
-
+import './Login.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
@@ -33,9 +33,9 @@ const Login = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('http://localhost:5000/login', { email });
+        const { data } = await axios.post('https://nameless-woodland-97201.herokuapp.com/login', { email });
         localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true });
+
         console.log(data);
     }
     let from = location.state?.from?.pathname || "/";
@@ -54,15 +54,21 @@ const Login = () => {
     const navigateRegister = event => {
         navigate('/register');
     }
+    if (user) {
+        navigate(from, { replace: true });
+    }
 
 
     if (loading) {
         return <Loading></Loading>;
     }
     return (
-        <div className="w-50 mx-auto mt-5 mb-2 border p-3">
-            <h2 className='text-center text-success'>Please Login</h2>
-            <Form onSubmit={handleSubmit}>
+        <div className="w-50 mx-auto p-2 mb-5">
+            <h5 className='text-center text-success title' >Please Login</h5>
+
+            {/* login form  */}
+
+            <Form style={{ fontFamily: 'Mate SC' }} className="d-flex flex-column " onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" ref={emailRef} name="email" placeholder="Enter email" />
@@ -74,13 +80,20 @@ const Login = () => {
                     <Form.Control type="password" name="password" placeholder="Password" />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" className="w-50 mx-auto" type="submit">
                     Login
                 </Button>
             </Form>
+
+            {/* Error message display if have any */}
+
             {errorMessage}
-            <p>New to Bicycle Warehouse Management? <Link to="/register" className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link> </p>
-            <p>Forget Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={resetPassword}>Reset Password</button> </p>
+
+            <p style={{ fontFamily: 'Mate SC', fontSize: "16px" }}>New to Bicycle Warehouse Management? <Link to="/register" className='text-primary pe-auto text-decoration-none' style={{ fontFamily: 'Concert One' }} onClick={navigateRegister}>Please Register</Link> </p>
+            <p style={{ fontFamily: 'Mate SC' }}>Forget Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' style={{ fontFamily: 'Concert One' }} onClick={resetPassword}>Reset Password</button> </p>
+
+            {/* for social login part */}
+
             <SocialLogin></SocialLogin>
             <ToastContainer />
         </div>

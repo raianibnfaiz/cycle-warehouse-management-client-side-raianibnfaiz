@@ -12,6 +12,7 @@ import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import AddNewBicycle from './Pages/AddNewBicycle/AddNewBicycle';
 import MyItems from './Pages/MyItems/MyItems';
 import Blogs from './Pages/Blogs/Blogs';
+import About from './Pages/About/About';
 function App() {
   return (
     <div className="App">
@@ -46,6 +47,7 @@ function App() {
 
         </Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

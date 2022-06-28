@@ -35,9 +35,9 @@ const Register = () => {
     }
 
     return (
-        <div className='register-form w-50 mx-auto mt-5 border p-4'>
-            <h2 style={{ textAlign: 'center' }}>Please Register</h2>
-            <Form onSubmit={handleRegister}>
+        <div className='register-form w-50 mx-auto p-2 mb-4'>
+            <h2 style={{ fontFamily: 'Mate SC', fontSize: "30px", color: "darkmagenta" }} className='text-center  '>Please Register</h2>
+            <Form style={{ fontFamily: 'Mate SC' }} className='d-flex flex-column' onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="name" name="name" placeholder="Name" required />
@@ -53,11 +53,11 @@ const Register = () => {
                     <Form.Control type="password" name="password" placeholder="Password" required />
                 </Form.Group>
                 <p style={{ color: "red" }}>{error}</p>
-                <Button variant="primary" type="submit">
+                <Button className="w-50 mx-auto" variant="primary" type="submit">
                     Register
                 </Button>
             </Form>
-            <p>Already have an account? <Link to="/login" className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link> </p>
+            <p style={{ fontFamily: 'Concert One' }}>Already have an account? <Link to="/login" style={{ fontFamily: 'Concert One' }} className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link> </p>
         </div>
     );
 };

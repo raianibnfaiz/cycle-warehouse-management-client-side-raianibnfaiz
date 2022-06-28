@@ -16,11 +16,7 @@ const MyItems = () => {
             const email = user.email;
             console.log(email);
             const url = `https://nameless-woodland-97201.herokuapp.com/myProducts?email=${email}`;
-            const { data } = await axios.get(url, {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            });
+            const { data } = await axios.get(url);
             setMyItem(data);
         }
         getProducts();
@@ -52,7 +48,10 @@ const MyItems = () => {
             <div className="row m-4">
                 {
                     myItem.length === 0 ?
-                        <div style={{ border: "1px solid skyBlue", borderRadius: "5px" }} className='w-50 p-4 mx-auto mt-5'><h2 className="text-center text-warning p-5">You Have Not Added Any<br /> <span className="text-center" style={{ color: "tomato" }}> Product</span> Yet!</h2></div>
+                        <div style={{
+                            textAlign: 'justify',
+                            textJustify: 'inter-word'
+                        }} className='w-75 p-4 mx-auto mt-3'><h2 className="text-center text-warning p-5">You Have Not Added Any<br /> <span className="text-center" style={{ color: "tomato" }}> Product</span> Yet!</h2></div>
 
                         :
 
