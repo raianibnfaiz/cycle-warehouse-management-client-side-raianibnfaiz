@@ -33,7 +33,7 @@ const Login = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('https://nameless-woodland-97201.herokuapp.com/login', { email });
+        const { data } = await axios.post('https://bicycle-fnka.onrender.com/login', { email });
         localStorage.setItem('accessToken', data.accessToken);
 
         console.log(data);

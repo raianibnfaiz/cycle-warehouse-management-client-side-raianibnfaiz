@@ -7,7 +7,7 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const firstSixProducts = products.slice(0, 6);
     useEffect(() => {
-        fetch('https://nameless-woodland-97201.herokuapp.com/products')
+        fetch('https://bicycle-fnka.onrender.com/products')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, [])

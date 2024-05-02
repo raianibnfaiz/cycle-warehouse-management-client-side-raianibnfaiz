@@ -8,7 +8,7 @@ const ManageInventory = () => {
     const [products, setProducts] = useProducts();
     const handleDelete = (id) => {
         if (window.confirm("Are you sure you want to delete?")) {
-            const url = `https://nameless-woodland-97201.herokuapp.com/product/${id}`
+            const url = `https://bicycle-fnka.onrender.com/product/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

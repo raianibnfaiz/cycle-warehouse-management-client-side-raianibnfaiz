@@ -15,12 +15,12 @@ const MyItems = () => {
         const getProducts = async () => {
             const email = user.email;
             console.log(email);
-            const url = `https://nameless-woodland-97201.herokuapp.com/myProducts?email=${email}`;
+            const url = `https://bicycle-fnka.onrender.com/myProducts?email=${email}`;
             const { data } = await axios.get(url);
             setMyItem(data);
         }
         getProducts();
-        //console.log(`https://nameless-woodland-97201.herokuapp.com/products?email=${email}`);
+        //console.log(`https://bicycle-fnka.onrender.com/products?email=${email}`);
 
     }, [user])
     if (loading) {
@@ -28,7 +28,7 @@ const MyItems = () => {
     }
     const handleDelete = (id) => {
         if (window.confirm("Are you sure you want to delete?")) {
-            const url = `https://nameless-woodland-97201.herokuapp.com/product/${id}`
+            const url = `https://bicycle-fnka.onrender.com/product/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
